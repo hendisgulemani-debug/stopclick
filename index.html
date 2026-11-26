@@ -1,0 +1,240 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>STOPCLICK | ClickFix Awareness</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: #080808;
+  color: white;
+  font-family: Arial, sans-serif;
+  text-align: center;
+  margin: 0;
+  padding: 25px 15px;
+}
+
+header {
+  padding: 20px;
+  border-bottom: 1px solid #333;
+}
+
+h1 {
+  color: #ff2525;
+  font-size: clamp(38px, 8vw, 60px);
+  animation: pulse 1s infinite alternate;
+}
+
+@keyframes pulse {
+  from { text-shadow: 0 0 5px red; }
+  to { text-shadow: 0 0 25px red; }
+}
+
+.subtitle {
+  color: #aaa;
+}
+
+.warning {
+  background: #180808;
+  border: 2px solid #ff2525;
+  border-radius: 12px;
+  padding: 25px;
+  max-width: 700px;
+  margin: 30px auto;
+}
+
+h2 {
+  color: #ff4444;
+}
+
+button {
+  background: #e00000;
+  color: white;
+  padding: 13px 22px;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  font-size: 16px;
+  margin: 8px;
+}
+
+button:hover {
+  background: #a00000;
+}
+
+#extra {
+  display: none;
+  color: #ffaaaa;
+  line-height: 1.7;
+}
+
+.terminal {
+  background: #020202;
+  color: #00ff66;
+  border: 1px solid #00ff66;
+  border-radius: 8px;
+  padding: 18px;
+  text-align: left;
+  font-family: monospace;
+  min-height: 180px;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+
+.safe {
+  color: #00ff88;
+  font-weight: bold;
+}
+
+footer {
+  color: #666;
+  margin-top: 50px;
+  font-size: 13px;
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>⚠ STOPCLICK ⚠</h1>
+<p class="subtitle">CLICKFIX AWARENESS PROJECT</p>
+</header>
+
+<div class="warning">
+
+<h2>🚨 DON'T RUN THAT COMMAND!</h2>
+
+<p>
+Fake verification websites can trick people into
+running malicious commands on their computers.
+</p>
+
+<h3>HOW THE SCAM WORKS</h3>
+
+<p>1. A suspicious website appears.</p>
+<p>2. It asks you to press WIN + R.</p>
+<p>3. It tells you to open CMD.</p>
+<p>4. It asks you to paste a command.</p>
+<p>5. Running that command can execute malware.</p>
+
+<h2>NEVER RUN UNTRUSTED COMMANDS.</h2>
+
+<button onclick="showWarning()">
+LEARN HOW TO STAY SAFE
+</button>
+
+<div id="extra">
+<h3>🔒 HOW TO PROTECT YOURSELF</h3>
+<p>• Never paste commands from random websites.</p>
+<p>• Close suspicious verification pages.</p>
+<p>• Don't run scripts you don't understand.</p>
+<p>• Ask a trusted adult or IT professional if unsure.</p>
+</div>
+
+</div>
+
+<div class="warning">
+
+<h2>💻 INTERACTIVE SCAM DEMONSTRATION</h2>
+
+<p>Watch how a fake verification tries to trick someone.</p>
+
+<div class="terminal" id="terminal">
+C:\Users\You> Waiting for demonstration...
+</div>
+
+<button onclick="startDemo()" id="demoButton">
+START DEMO
+</button>
+
+<p class="safe" id="demoStatus">
+DEMO NOT STARTED
+</p>
+
+</div>
+
+<div class="warning">
+
+<h2>❓ WHAT IF YOU ALREADY RAN IT?</h2>
+
+<p>
+Disconnect from the internet if you suspect malware,
+avoid entering passwords, and ask a trusted adult
+or IT professional for help checking the device.
+</p>
+
+</div>
+
+<footer>
+STOPCLICK © 2026 | CLICK SMART. STAY SAFE.
+</footer>
+
+<script>
+
+function showWarning() {
+  const extra = document.getElementById("extra");
+
+  extra.style.display =
+    extra.style.display === "block" ? "none" : "block";
+}
+
+let demoRunning = false;
+
+function startDemo() {
+  if (demoRunning) return;
+
+  demoRunning = true;
+
+  const terminal = document.getElementById("terminal");
+  const status = document.getElementById("demoStatus");
+  const button = document.getElementById("demoButton");
+
+  const messages = [
+    "C:\\Users\\You> Starting simulation...",
+    "[WEBSITE] Fake human verification appears.",
+    "[WEBSITE] Please verify that you are human!",
+    "[WEBSITE] Press WIN + R...",
+    "[WEBSITE] Open CMD...",
+    "[WEBSITE] Paste this command...",
+    "",
+    "⚠ WARNING!",
+    "This is where the scam tries to trick you.",
+    "Real verification should not require this.",
+    "",
+    "SIMULATION FINISHED.",
+    "No commands were executed."
+  ];
+
+  terminal.innerHTML = "";
+  status.textContent = "SIMULATION RUNNING...";
+  button.disabled = true;
+
+  let i = 0;
+
+  function nextLine() {
+    if (i < messages.length) {
+      terminal.textContent += messages[i] + "\n";
+      i++;
+      setTimeout(nextLine, 850);
+    } else {
+      status.textContent = "✓ DEMO COMPLETE";
+      button.disabled = false;
+      demoRunning = false;
+    }
+  }
+
+  nextLine();
+}
+
+</script>
+
+</body>
+</html>
+ 
